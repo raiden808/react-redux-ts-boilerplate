@@ -1,5 +1,5 @@
 // src/js/components/Form.jsx
-import React, { Component } from "react";
+import React, { Component,useState } from "react";
 import { connect } from "react-redux";
 import { addArticle } from "../actions/index";
 
@@ -9,12 +9,31 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-const ConnectedForm = () => {
+const ConnectedForm = ({addArticle}) => {
+
+    const [theTitle,setTheTitle] = useState('')
+
+    const handleSubmit = (v) =>{
+        v.preventDefault();
+        addArticle({id:'test',title:theTitle})
+        setTheTitle('')
+    }
 
     return (
-        <form>
-            <h2>Test</h2>
+        
+       <form onSubmit={(v) => handleSubmit(v)}>
+            <div>
+                <label htmlFor="title">Title</label>
+                <input
+                    type="text"
+                    id="title"
+                    value={theTitle}
+                    onChange={(e) => setTheTitle(e.target.value)}
+                />
+            </div>
+            <button type="submit">SAVE</button>
         </form>
+       
     )
 }
 

@@ -1,8 +1,11 @@
 import React from 'react';
+import { Counter } from './provider/counter';
 
 function App() {
     return (
-        <div>Hello World!</div>
+        <>
+        <Counter />
+        </>
     );
 }
-export default App;
+export default App; 

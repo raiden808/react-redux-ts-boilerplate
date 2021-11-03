@@ -8,7 +8,13 @@ const initialState = {
 }
 
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-  const response = await client.get('/fakeApi/posts')
+
+  console.log('fetch triggered');
+
+  const response = await client.get('https://jsonplaceholder.typicode.com/posts')
+
+  console.log(response.data)
+
   return response.data
 })
 
